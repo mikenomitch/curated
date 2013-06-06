@@ -1,0 +1,55 @@
+<div class="row-fluid dark_gray">
+  <div class="span2 nopad nomarg">
+  </div>
+  <div class="span8">  
+    <div class="tile">
+      <div class="devise_info_holder">
+          <h2 class="devise_header">Sign Up</h2>
+
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div>
+            <%= f.email_field :email, :autofocus => true, :placeholder => "Email" %></div>
+
+            <div>
+            <%= f.email_field :username, :autofocus => true, :placeholder => "Username" %></div>
+
+            <div>
+            <%= f.password_field :password, :placeholder => "Password" %></div>
+
+            <div>
+            <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %></div>
+
+            <div><%= f.submit "Sign Up", :class => "devise_button" %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span2">
+    <div class="row-fluid dark_gray">
+      <div class="span2 nopad nomarg">
+        <div id="devise_holder">
+          <% if user_signed_in? %>
+            <div class="devise_link">
+              <a href="/<%=current_user.username%>"> My Page </a>
+            </div>
+            <div class="devise_link">
+              <a onclick='replaceMiddle("edit")'> My Account </a>
+            </div>
+            <div class="devise_link">
+              <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+            </div>
+          <% else %>
+            <div class="devise_link">
+              <a href="/users/sign_up"> Sign Up </a>
+            </div>
+            <div class="devise_link">
+                <a href="/users/sign_in"> Sign In </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

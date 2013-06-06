@@ -1,0 +1,12 @@
+<div class="span8" id="middle_span">
+  <table id="songs-table">
+    <tr>
+    </tr>
+  </table>
+</div>
+
+<div class="span2">
+  <div class="new_album_button">
+    <a href="#/new" class="no_special_hover"><i class="icon-plus-sign add_video_icon"> </i></a>
+  </div>
+<div>

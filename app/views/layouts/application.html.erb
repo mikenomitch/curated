@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Curate</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="albums-body">
+<script>
+  var thisUser = "<%=User.find_by_username(params[:username]).username if params[:username] && User.find_by_username(params[:username]) %>";
+</script>
+
+<% if @load_left_rail %> 
+  <div class="row-fluid dark_gray">
+    <div class="span2 nopad nomarg">
+      <div id="left_rail_content">
+        <div id="user_name">
+        </div> </br>
+        <div id="album_selector">
+        </div> </br>
+        <div id="song_selector">
+        </div>
+      </div>
+      <div id="devise_holder">
+        <% if user_signed_in? %>
+          <div class="devise_link">
+            <a href="/<%=current_user.username%>"> My Page </a>
+          </div>
+          <div class="devise_link">
+            <a onclick='replaceMiddle("edit")'> My Account </a>
+          </div>
+          <div class="devise_link">
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          </div>
+        <% else %>
+          <div class="devise_link">
+            <a href="/users/sign_up"> Sign Up </a>
+          </div>
+          <div class="devise_link">
+            <a href="/users/sign_in"> Sign In </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div id="yield_area">
+      <%= yield %>
+    </div>
+  </div>
+<% else %>
+  <div id="yield_area">
+    <%= yield %>
+  </div>
+<% end %>
+</body>
+<div id="bottom_pad">
+</div>
+</html>

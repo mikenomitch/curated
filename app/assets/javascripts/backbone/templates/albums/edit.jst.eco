@@ -1,0 +1,38 @@
+<form id="edit-album" name="album">
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="field">
+        <input type="text" name="name" id="name" value="<%= @name %>" placeholder="Album Title" class="input_field top_input">
+      </div>
+
+      <div class="field">
+        <input type="text" name="band" id="band" value="<%= @band %>" placeholder="Band" class="input_field">
+      </div>
+
+      <div class="field">
+        <input type="url" name="image_url" id="image_url" value="<%= @image_url %>" placeholder="Album URL" class="input_field">
+      </div>
+    </div>
+    <div class="span6 closer_left">
+      <div class="field all_centered left_a_bit">
+        <div class="rating_header" style="color: <%=@rating_color%>">
+          Rating:
+        </div>
+        <div id="sliderAmount" style="color: <%=@rating_color%>">
+          <%= @rating %>
+        </div>​
+        <input id="rating" name="rating" type="range" min="0" max="10" step="1" value="<%= @rating %>" class="input_field all_centered" style="background-color: <%=@rating_color%>">
+      </div>
+
+      <div class="field all_centered left_a_bit">
+        <textarea name="review" id="review" value="<%= @review %>" placeholder="Micro-Review" class="input_field"><%= @review %></textarea>
+      </div>
+
+      <div class="actions">
+        <div class="destroy btn"> Destroy </div>
+        <div class='back_button btn'>Back</div>
+      </div>
+
+    </div>
+  </div>
+</form>

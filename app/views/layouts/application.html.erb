@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Rambla:700|Noto+Sans:400,700|Archivo+Black|Montserrat:400,700|Open+Sans:400,700,800,600' rel='stylesheet' type='text/css'>
 </head>
 <body id="albums-body">
 <script>
@@ -24,21 +25,21 @@
       </div>
       <div id="devise_holder">
         <% if user_signed_in? %>
-          <div class="devise_link">
-            <a href="/<%=current_user.username%>"> My Page </a>
+          <div class="devise_link_holder">
+            <a class="devise_link" href="/<%=current_user.username%>"> My Page </a>
           </div>
-          <div class="devise_link">
-            <a onclick='replaceMiddle("edit")'> My Account </a>
+          <div class="devise_link_holder">
+            <a class="devise_link" onclick='replaceMiddle("edit")'> My Account </a>
           </div>
-          <div class="devise_link">
-            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <div class="devise_link_holder">
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "devise_link" %>
           </div>
         <% else %>
-          <div class="devise_link">
-            <a href="/users/sign_up"> Sign Up </a>
+          <div class="devise_link_holder">
+            <a class="devise_link" href="/users/sign_up"> Sign Up </a>
           </div>
-          <div class="devise_link">
-            <a href="/users/sign_in"> Sign In </a>
+          <div class="devise_link_holder">
+            <a class="devise_link" href="/users/sign_in"> Sign In </a>
           </div>
         <% end %>
       </div>

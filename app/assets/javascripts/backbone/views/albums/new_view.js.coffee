@@ -24,8 +24,7 @@ class Curate.Views.Albums.NewView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (album) =>
         @model = album
-        window.location.hash = "/#{@model.id}"
-
+        Backbone.history.navigate('', true)
       error: (album, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )

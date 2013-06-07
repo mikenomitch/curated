@@ -2,6 +2,11 @@
   <form id="new-song" name="song">
     <div class="row-fluid">
       <div class="span6">
+
+        <div class="field">
+          <input type="text" name="spotify_url" id="spotify_url" value="<%= @spotify_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
+        </div>
+
         <div class="field">
           <input type="text" name="name" id="name" value="<%= @name %>" placeholder="Song Title" class="input_field top_input">
         </div>
@@ -11,8 +16,9 @@
         </div>
 
         <div class="field">
-          <input type="url" name="image_url" id="image_url" value="<%= @image_url %>" placeholder="Song URL" class="input_field">
+          <input type="url" name="image_url" id="image_url" value="<%= @image_url %>" placeholder="Image URL" class="input_field">
         </div>
+
       </div>
       <div class="span6 closer_left">
         <div class="field all_centered left_a_bit">
@@ -26,14 +32,12 @@
         </div>
 
         <div class="field all_centered left_a_bit">
-          <textarea name="review" id="review" value="<%= @review %>" placeholder="Micro-Review" class="input_field"><%= @review %></textarea>
+          <textarea name="review" id="review" value="<%= @review%>" placeholder="Micro-Review" class="input_field"><%= @review %></textarea>
         </div>
 
         <div class="actions">
-          <input id="save_Song" type="submit" value="Create Album" />
+          <input id="save_Song" class="tile_button" type="submit" value="Create Album" />
         </div>
-
-        <div class="btn" id="buttony">SAVE ME BABY</div>
 
       </div>
     </div>

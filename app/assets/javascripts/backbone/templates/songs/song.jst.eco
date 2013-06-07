@@ -2,27 +2,26 @@
   <div class="row-fluid">
     <div class="span5">
       <div class="album-image-holder">
+        <i class="icon-play-circle play_button" id="play_button_for_<%=@id%>"></i>
         <img src="<%=@image_url%>" class="album-image" id="song_<%=@id%>_image"></img>
         <span id="song_<%=@id%>_player" class="hidden_player">
-        <!--   <iframe width="281" height="281" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F13766552&auto_play=false&show_user=false&show_comments=false&liking=false&buying=false&sharing=false"></iframe> -->
-        <iframe src="https://embed.spotify.com/?uri=spotify:track:6RBXsjBXrCLU8vVVlwXzOR&view=coverart" width="281" height="281" frameborder="0" allowtransparency="true"></iframe>
-        <span>
+        </span>
       </div>
     </div>
     <div class="span7 centered_text album-description">
-      <div class="album-name" style="color: <%=@rating_color%>">
+      <div class="album-name">
        <%= @name %>
       </div>
-      <div class="band-name" style="color: <%=@rating_color%>">
+      <div class="band-name">
         <%= @band %>
       </div>
-      <div class="album-rating" style="color: <%=@rating_color%>">
+      <div class="album-rating" style="background-color: <%=@rating_color%>">
         <%= @rating %>
       </div>
-      <div class="micro-review" style="color: <%=@rating_color%>">
+      <div class="micro-review">
         <em>"<%= @review %>"</em>
       </div>
-        <a href="#<%=@id%>/edit"> <span class="nav_link">Edit</span> </a>
+        <a class="edit_link" href="#<%=@id%>/edit"> <span class="nav_link"><i class="icon-cog icon_and_edit"> Edit</i></span> </a>
     </div>
   </div>
 </div>

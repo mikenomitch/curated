@@ -1,8 +1,6 @@
-class SongsController < RestfulController
+class SongsController < ApplicationController
 
-  respond_to :json
-
-  before_filter :load_left_rail
+  before_filter :load_left_rail, :except => [:update]
 
   def load_left_rail
    @load_left_rail = true
@@ -11,7 +9,12 @@ class SongsController < RestfulController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.find_by_username(params[:username])
+    @songs = Song.where(:user_id => User.find_by_username(params[:username]))
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @songs }
+    end
   end
 
   # GET /songs/1
@@ -29,7 +32,6 @@ class SongsController < RestfulController
   # GET /songs/new.json
   def new
     @song = Song.new
-    @song.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,22 +46,20 @@ class SongsController < RestfulController
 
   # POST /songs
   # POST /songs.json
-  # def create
-  #   @song = Song.new(params[:song])
-
-  #   respond_to do |format|
-  #     if @song.save
-  #       format.html { redirect_to @song, notice: 'Song was successfully created.' }
-  #       format.json { render json: @song, status: :created, location: @song }
-  #     else
-  #       format.html { render action: "new" }
-  #       format.json { render json: @song.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   def create
-    super
+    @song = Song.new(params[:song])
+    @song.user = User.first
+    @song.save
+
+    respond_to do |format|
+      if @song.save
+        format.html { redirect_to @song, notice: 'Song was successfully created.' }
+        format.json { render json: @song, status: :created, location: @song }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /songs/1

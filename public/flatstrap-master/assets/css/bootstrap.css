@@ -216,9 +216,8 @@ a {
   text-decoration: none;
 }
 a:hover,
-a:focus {
+a:focus 
   color: #005580;
-  text-decoration: underline;
 }
 .img-polaroid {
   padding: 4px;

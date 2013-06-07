@@ -6,6 +6,10 @@ class Curate.Views.Songs.SongView extends Backbone.View
   events:
     "click .destroy" : "destroy"
     "click .album-image" : "showPlayer"
+    "mouseenter .album-image" : "showPlayButton"
+    "mouseenter .play_button" : "showPlayButton"
+    "mouseleave .album-image" : "hidePlayButton"
+    "click .play_button" : "showPlayer"
 
   tagName: "tr"
 
@@ -15,10 +19,19 @@ class Curate.Views.Songs.SongView extends Backbone.View
     return false
 
   render: () ->
-    json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating)})
+    json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating), embedDiv: @model.embedDiv(@model.attributes.spotify_url)})
     @$el.html(@template(json))
+    @$(".hidden_player").html(@model.embedDiv(@model.attributes.spotify_url))
     return this
 
+  showPlayButton: ->
+    $("#play_button_for_"+@model.attributes.id).show()
+    hide: { fixed: true }
+
+  hidePlayButton: ->
+    $("#play_button_for_"+@model.attributes.id).hide()    
+
   showPlayer: ->
+    $("#play_button_for_"+@model.attributes.id).hide()
     $("#song_"+@model.attributes.id+"_image").hide()
     $("#song_"+@model.attributes.id+"_player").show()

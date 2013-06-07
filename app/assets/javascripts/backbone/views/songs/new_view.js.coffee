@@ -6,7 +6,6 @@ class Curate.Views.Songs.NewView extends Backbone.View
   events:
     "submit #new-song": "save"
     "change #rating": "change_rating"
-    "click #buttony": "testSaving"
 
   constructor: (options) ->
     super(options)
@@ -19,37 +18,18 @@ class Curate.Views.Songs.NewView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
+    input_url = @model.get("spotify_url")
+    new_spotty = @model.getEmbed(input_url)   
+    @model.set("spotify_url", "https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F42845570&show_artwork")
 
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
       success: (song) =>
-        alert("success?")
         @model = song
-        window.location.hash = "/#{@model.id}"
-        alert("success2")
-
+        Backbone.history.navigate('', true)
       error: (song, jqXHR) =>
-        alert(JSON.stringify(@model.toJSON()))
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
-    )
-
-  testSaving: () ->
-    @model.unset("errors")
-    object =
-      "name":"f",
-      "band":"d",
-      "band_id":null,
-      "rating":"6",
-      "review":"ccce",
-      "spotify_url":null,
-      "other_url":null,
-      "image_url":"http://www.google.com"
-    @collection.create(object,
-      success: (song) =>
-        alert("success?")
-      error:(song) =>
-        alert("failure")
     )
 
   change_rating: ->
@@ -64,6 +44,3 @@ class Curate.Views.Songs.NewView extends Backbone.View
     this.$("form").backboneLink(@model)
 
     return this
-
-
-# {"name":"f","band":"d","band_id":null,"rating":"6","review":"ccce","spotify_url":null,"other_url":null,"image_url":"http://www.google.com"}

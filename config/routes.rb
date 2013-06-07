@@ -6,6 +6,9 @@ Curate::Application.routes.draw do
     resources :songs
   end
 
+  resources :songs
+  resources :albums
+
   get "albums/index"
   root :to => "pages#index"
 

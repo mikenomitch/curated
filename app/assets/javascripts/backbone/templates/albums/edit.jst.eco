@@ -1,6 +1,11 @@
 <form id="edit-album" name="album">
   <div class="row-fluid">
     <div class="span6">
+
+      <div class="field">
+        <input type="text" name="spotify_url" id="spotify_url" value="<%= @spotify_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
+      </div>
+
       <div class="field">
         <input type="text" name="name" id="name" value="<%= @name %>" placeholder="Album Title" class="input_field top_input">
       </div>

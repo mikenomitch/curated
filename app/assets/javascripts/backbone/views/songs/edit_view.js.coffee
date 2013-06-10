@@ -20,13 +20,22 @@ class Curate.Views.Songs.EditView extends Backbone.View
     )
 
   change_rating: ->
-    $("#sliderAmount").html($("#rating").val())
+    rating = $("#rating").val()
+    if rating == "10" || 10
+      $("#sliderAmount").css("letter-spacing","-20px")
+      $("#sliderAmount").css("padding-right","20px")
+    else
+      $("#sliderAmount").css("letter-spacing","normal")        
+      $("#sliderAmount").css("padding-right","0px")        
+    $("#sliderAmount").html(rating)
     $("#sliderAmount").css("background-color",@model.rating_color($("#rating").val()))
-    # $(".rating_header").css("color",@model.rating_color($("#rating").val()))
     $("#rating").css("background-color",@model.rating_color($("#rating").val()))
 
   render: ->
     json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating)})
     @$el.html(@template(json))
     this.$("form").backboneLink(@model)
+    if @model.attributes.rating == 10
+      @$("#sliderAmount").css("letter-spacing","-20px")
+      @$("#sliderAmount").css("padding-right","20px")
     return this

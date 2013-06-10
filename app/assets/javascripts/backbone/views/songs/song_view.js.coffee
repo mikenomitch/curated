@@ -25,6 +25,9 @@ class Curate.Views.Songs.SongView extends Backbone.View
     @$el.html(@template(json))
     @$(".hidden_player").html(@model.embedDiv(@model.attributes.spotify_url,@model.attributes.id ))
     @$("#edit_holder").html(@showEdit(window.showAdd, @model.attributes.id, window.currentUser))
+    if @model.attributes.rating == 10
+      @$(".album-rating").css("letter-spacing","-8px")
+      @$(".album-rating").css("padding-right","14px")
     return this
 
   showEdit: (showIt,id, username) ->

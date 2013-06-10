@@ -9,7 +9,9 @@
 </head>
 <body id="albums-body">
 <script>
+  var currentUser = "<%=current_user.username if current_user%>"
   var thisUser = "<%=User.find_by_username(params[:username]).username if params[:username] && User.find_by_username(params[:username]) %>";
+  var showAdd = (currentUser == thisUser)
 </script>
 
 <% if @load_left_rail %> 

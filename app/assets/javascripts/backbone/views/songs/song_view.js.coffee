@@ -6,9 +6,11 @@ class Curate.Views.Songs.SongView extends Backbone.View
   events:
     "click .destroy" : "destroy"
     "click .album-image" : "showPlayer"
-    "mouseenter .album-image" : "showPlayButton"
-    "mouseenter .play_button" : "showPlayButton"
-    "mouseleave .album-image" : "hidePlayButton"
+    "mouseover .album-image" : "showPlayButton"
+    "hover .album-image" : "showPlayButton"
+    "mouseover .play_button" : "showPlayButton"
+    "mouseout .album-image" : "hidePlayButton"
+    "hover .tile" : "hidePlayButton"
     "click .play_button" : "showPlayer"
 
   tagName: "tr"

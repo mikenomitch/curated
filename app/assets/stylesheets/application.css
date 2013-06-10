@@ -155,7 +155,7 @@ html, body {
   color:#DDD;
 }
 
-.new_album_button, .new_song_button{
+#new_album_button, .new_song_button{
   position: fixed;
   top: 20px;
   right: 60px;
@@ -171,7 +171,7 @@ html, body {
   margin-left: -50px;
 }
 
-.new_album_button:hover, .new_song_button:hover{
+#new_album_button:hover, .new_song_button:hover{
   color:#FFF; 
 }
 

@@ -18,10 +18,16 @@ class Curate.Views.Songs.IndexView extends Backbone.View
     $("#song_selector").html('<a href="/'+thisUser+'/songs" class="no_special_hover whitened"> Songs </a>')
     $("#album_selector").html('<a href="/'+thisUser+'/albums" class="no_special_hover whitened"> Albums </a>')
 
+  addButtonRender: ->
+    alert($("#new_album_button").length)
+    $("#new_album_button").html('<a href="#/new" class="no_special_hover"><i class="icon-plus-sign add_video_icon"> </i></a>')
+
   render: =>
     @$el.html(@template(songs: @options.songs.toJSON() ))
     @sideBarRender()
     @addAll()
+    if showAdd
+      @addButtonRender()
 
 
     return this

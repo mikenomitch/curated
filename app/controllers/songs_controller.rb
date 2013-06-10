@@ -48,7 +48,7 @@ class SongsController < ApplicationController
   # POST /songs.json
   def create
     @song = Song.new(params[:song])
-    @song.user = User.first
+    @song.user = current_user
     @song.save
 
     respond_to do |format|
@@ -66,14 +66,15 @@ class SongsController < ApplicationController
   # PUT /songs/1.json
   def update
     @song = Song.find(params[:id])
-
-    respond_to do |format|
-      if @song.update_attributes(params[:song])
-        format.html { redirect_to @song, notice: 'Song was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
+    if @song.user = current_user
+      respond_to do |format|
+        if @song.update_attributes(params[:song])
+          format.html { redirect_to @song, notice: 'Song was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @song.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

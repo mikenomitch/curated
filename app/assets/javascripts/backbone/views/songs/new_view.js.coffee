@@ -19,10 +19,8 @@ class Curate.Views.Songs.NewView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
     input_url = @model.get("spotify_url")
-    new_spotty = @model.getEmbed(input_url)   
-    @model.set("spotify_url", "https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F42845570&show_artwork")
-
     @model.unset("errors")
+    @model.set("spotify_url", @getEmbed(input_url))
 
     @collection.create(@model.toJSON(),
       success: (song) =>
@@ -31,6 +29,26 @@ class Curate.Views.Songs.NewView extends Backbone.View
       error: (song, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
+
+  getEmbed: (url_input)->
+      if (/soundcloud/.test(url_input))
+        @getSoundCloudCode(url_input)
+      else
+        if (/uri/.test(url_input))
+          @getSpotifyCode(url_input)
+
+  getSoundCloudCode: (url) ->
+    $.getJSON "http://soundcloud.com/oembed/?url=#{url}", {}, (json, response) ->
+      iframe_html = json.html
+      shortened_url = JSON.stringify(iframe_html.match(/src=(.*)&show_artwork/)[0])
+      shortened_url = shortened_url.substring(7, shortened_url.length - 1)
+      # alert shortened_url.toString()
+      @model.set("spotify_url", "https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F42845570&show_artwork")
+
+  getSpotifyCode: (url) ->
+    thing = url.match(/uri(.*)/)
+    thing = JSON.stringify(thing).substring(1, thing.length)
+    return thing
 
   change_rating: ->
     $("#sliderAmount").html($("#rating").val())

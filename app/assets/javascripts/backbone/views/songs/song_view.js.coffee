@@ -21,10 +21,15 @@ class Curate.Views.Songs.SongView extends Backbone.View
     return false
 
   render: () ->
-    json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating), embedDiv: @model.embedDiv(@model.attributes.spotify_url)})
+    json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating), embedDiv: @model.embedDiv(@model.attributes.spotify_url), showEdit: true})
     @$el.html(@template(json))
-    @$(".hidden_player").html(@model.embedDiv(@model.attributes.spotify_url))
+    @$(".hidden_player").html(@model.embedDiv(@model.attributes.spotify_url,@model.attributes.id ))
+    @$("#edit_holder").html(@showEdit(window.showAdd, @model.attributes.id, window.currentUser))
     return this
+
+  showEdit: (showIt,id, username) ->
+    if showIt == true
+      '<a class="edit_link" href="/'+username+'/songs#'+id+'/edit"> <span class="nav_link"><i class="icon-cog icon_and_edit"> Edit</i></span> </a>'
 
   showPlayButton: ->
     $("#play_button_for_"+@model.attributes.id).show()
@@ -37,3 +42,4 @@ class Curate.Views.Songs.SongView extends Backbone.View
     $("#play_button_for_"+@model.attributes.id).hide()
     $("#song_"+@model.attributes.id+"_image").hide()
     $("#song_"+@model.attributes.id+"_player").show()
+    SC.Widget("widget_"+@model.attributes.id).play()

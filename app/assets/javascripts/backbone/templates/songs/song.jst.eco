@@ -21,7 +21,8 @@
       <div class="micro-review">
         <em>"<%= @review %>"</em>
       </div>
-        <a class="edit_link" href="#<%=@id%>/edit"> <span class="nav_link"><i class="icon-cog icon_and_edit"> Edit</i></span> </a>
+        <div id="edit_holder">
+        </div>
     </div>
   </div>
 </div>

@@ -20,6 +20,7 @@
 //= require backbone/curate
 //= require chosen-jquery
 //= require select2
+//= require soundcloud_activator
 //= require_tree .
 
 function replaceMiddle(div_name){

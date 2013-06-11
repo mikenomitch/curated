@@ -2,9 +2,19 @@ Curate.Views.Songs ||= {}
 
 class Curate.Views.Songs.IndexView extends Backbone.View
   template: JST["backbone/templates/songs/index"]
+  no_songs_template: JST["backbone/templates/songs/no_songs"]
+
+  events:
+    "click .first_album_button" : "hidePrompt"
 
   initialize: () ->
     @options.songs.bind('reset', @addAll)
+
+  hidePrompt: ->
+    @$("#make_album_prompt").hide()
+
+  noSongs: =>
+    @$("#albums-table").prepend(@no_songs_template)
 
   addAll: () =>
     @options.songs.each(@addOne)
@@ -25,11 +35,12 @@ class Curate.Views.Songs.IndexView extends Backbone.View
     if thisUser == ""
       window.location = "/"
     else
+      # if @options.songs.toJSON().length == 0
+      # @$el.html(@template("fraba")
+      # else
       @$el.html(@template(songs: @options.songs.toJSON() ))
       @sideBarRender()
       @addAll()
       if showAdd == true
         @addButtonRender()
-
-
     return this

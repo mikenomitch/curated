@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.find_by_username(params[:username]) || Album.last
+    @albums = Album.find_by_username(params[:username])
   end
 
   # GET /albums/1

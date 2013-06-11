@@ -175,6 +175,19 @@ html, body {
   cursor: pointer;
 }
 
+#first_album_button_holder{
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 4em;
+}
+
+.first_album_button{
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 8em;
+}
+
 #positioner {
   position: absolute;
   right: 0;
@@ -525,4 +538,8 @@ a.visited{
 
 .edit_holder{
   margin-top: 4px;
+}
+
+#make_album_prompt, .red{
+  color: #FF530F;
 }

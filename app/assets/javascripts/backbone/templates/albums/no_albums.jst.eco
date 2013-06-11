@@ -1,0 +1,20 @@
+<div class="tile" id="make_album_prompt">
+  <div class="centered_text album-description">
+    <div class="album-name red">
+     You have no album reviews... yet.
+    </div>
+    </br>
+    <div class="band-name red">
+      Click the plus button to make your first. </br>
+    </div>
+    <div class="first_album_button_holder">
+      <a href="#/new" class="no_special_hover"><i class="icon-plus-sign first_album_button"> </i></a>
+    </div>
+    <div class="band-name red">
+      Provide an 'Image URL' of the album art so your page can look nice.
+      </br>
+      </br>
+      Linking to SoundCloud, YouTube, or Spotify is optional, but helpful.
+    </div>
+  </div>
+</div>

@@ -66,3 +66,56 @@ function directToUser(){
     window.location.href="/"+$("#user_search").val();
   }
 }
+
+// THE YOUTUBE LOADER
+
+// var div_holder = {
+//   name: null,
+//   setname: function(div_name){
+//     this.name = div_name
+//   }
+// }
+
+// function playYouTube(div_name){
+//   loadIFrameApi();
+//   div_holder.setName(div_name);
+// }
+
+// function loadIFrameApi(){
+//     var tag = document.createElement('script');
+//     tag.src = "//www.youtube.com/iframe_api";
+//     var firstScriptTag = document.getElementsByTagName('script')[0];
+//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//   }
+
+// function onYouTubeIframeAPIReady() {
+//   loadFrame();
+// }
+
+// function loadFrame(){
+//     player = new YT.Player(div_holder.name, {
+//       height: '281px',
+//       width: '281px',
+//       videoId: "PQRJvZBH1gw",
+//       playerVars: {
+//         autoplay: 1,
+//         controls: 1,
+//         autohide: 2,
+//         modestbranding: 0,
+//         rel: 0,
+//         fs: 1,
+//         showinfo: 0,
+//         start: 0,
+//         theme: "dark",
+//         iv_load_policy: 3,
+//         },
+//       events: {
+//         'onReady': onPlayerReady,
+//       }
+//     }
+//   )
+// }
+
+// function onPlayerReady(event) {
+//     event.target.playVideo();
+// }

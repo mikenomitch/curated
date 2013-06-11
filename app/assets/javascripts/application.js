@@ -35,14 +35,25 @@ function replaceMiddle(div_name){
     });
   }
   else{
-   $.ajax({
-      type: "GET",
-      url: "/devise/registrations/new",
-      data: {},
-        success: function(data) {
-          $("#middle_span").html(data);
-        }
-    }); 
+    if (div_name == "sign_up"){
+     $.ajax({
+        type: "GET",
+        url: "/devise/registrations/new",
+        data: {},
+          success: function(data) {
+            $("#middle_span").html(data);
+          }
+      }); 
+    }else{
+      $.ajax({
+        type: "GET",
+        url: "/devise/registrations/edit",
+        data: {},
+          success: function(data) {
+            $("#middle_span").html(data);
+          }
+      }); 
+    }
   }
  
   }

@@ -25,17 +25,33 @@ class Curate.Views.Albums.IndexView extends Backbone.View
 
   sideBarRender: ->
     $("#user_name").html(thisUser)
-    $("#song_selector").html('<a href="/'+thisUser+'/songs" class="no_special_hover whitened"> Songs </a>')
     $("#album_selector").html('<a href="/'+thisUser+'/albums" class="no_special_hover whitened"> Albums </a>')
+    $("#song_selector").html('<a href="/'+thisUser+'/songs" class="no_special_hover whitened"> Songs </a>')
+    if (thisUserSongCount == 0 && showAdd != true)
+      $("#song_selector").hide()
+
+  addButtonRender: ->
+    this.$("#new_album_button").html('<a href="#/new" class="no_special_hover"><i class="icon-plus-sign add_video_icon"> </i></a>')
 
   render: =>
-    if @options.albums.toJSON().length == 0
-      @$el.html(@template(albums: @options.albums.toJSON() ))
-      @sideBarRender()
-      @noAlbums()
+    if thisUser == ""
+      window.location = "/"
     else
-      @$el.html(@template(albums: @options.albums.toJSON() ))
-      @sideBarRender()
-      @addAll()
+      if @options.albums.toJSON().length == 0
+        if showAdd == true
+          @$el.html(@template(albums: @options.albums.toJSON() ))
+          @sideBarRender()
+          @noAlbums()
+        else 
+          if thisUserSongCount > 0
+            window.location = "/"+thisUser+"/songs"
+          else
+            window.location = "/"
+      else
+        @$el.html(@template(albums: @options.albums.toJSON() ))
+        @sideBarRender()
+        @addAll()
+        if showAdd == true
+          @addButtonRender()
 
     return this

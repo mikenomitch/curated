@@ -34,7 +34,8 @@
         </div>
 
         <div class="actions">
-          <input id="save_album" type="submit" value="Create Album" />
+          <input id="cancel" class="tile_button" type="button" value="Cancel" />
+          <input id="save_album" type="submit" class="tile_button" value="Create Album" />
         </div>
 
       </div>

@@ -4,10 +4,9 @@
     </tr>
   </table>
 </div>
-
-<div class="span2">
-  <div class="new_album_button">
-    Hello
-    <!-- <a href="#/new" class="no_special_hover"><i class="icon-plus-sign add_video_icon"> </i></a> -->
+<div id="new_button_wrapper">
+  <div id="positioner">
+    <div id="new_album_button">
+    </div>
   </div>
-<div>
+</div>

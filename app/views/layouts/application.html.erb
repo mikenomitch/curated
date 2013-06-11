@@ -11,6 +11,8 @@
 <script>
   var currentUser = "<%=current_user.username if current_user%>"
   var thisUser = "<%=User.find_by_username(params[:username]).username if params[:username] && User.find_by_username(params[:username]) %>";
+  var thisUserSongCount = "<%=User.find_by_username(params[:username]).songs.length if params[:username] && User.find_by_username(params[:username]) %>";
+  var thisUserAlbumCount = "<%=User.find_by_username(params[:username]).albums.length if params[:username] && User.find_by_username(params[:username]) %>";
   var showAdd = (currentUser == thisUser)
 </script>
 
@@ -31,7 +33,7 @@
             <a class="devise_link" href="/<%=current_user.username%>"> My Page </a>
           </div>
           <div class="devise_link_holder">
-            <a class="devise_link" onclick='replaceMiddle("edit")'> My Account </a>
+            <a class="devise_link" href="/users/edit"> My Account </a>
           </div>
           <div class="devise_link_holder">
             <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "devise_link" %>

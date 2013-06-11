@@ -28,6 +28,9 @@ class Curate.Models.Song extends Backbone.Model
     else
       if (/uri/.test(stored_url) || /spotify/.test(stored_url))
         return '<iframe id="widget_'+id+'" src="https://embed.spotify.com/?uri='+stored_url+'" width="281" height="281" frameborder="0" allowtransparency="true"></iframe>'
+      else
+        if /v=/.test(stored_url)
+          return '<iframe id="widget_'+id+'" width="281" height="281" src="http://www.youtube.com/embed/'+stored_url[2..12]+'" frameborder="0" allowfullscreen></iframe>'
 
 class Curate.Collections.SongsCollection extends Backbone.Collection
   model: Curate.Models.Song

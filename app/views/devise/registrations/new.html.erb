@@ -35,7 +35,7 @@
               <a href="/<%=current_user.username%>"> My Page </a>
             </div>
             <div class="devise_link">
-              <a onclick='replaceMiddle("edit")'> My Account </a>
+              <a href="/users/edit"> My Account </a>
             </div>
             <div class="devise_link">
               <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

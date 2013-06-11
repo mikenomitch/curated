@@ -6,6 +6,7 @@ class Curate.Views.Albums.NewView extends Backbone.View
   events:
     "submit #new-album": "save"
     "change #rating": "change_rating"
+    "click #cancel": "cancelAndReturn"
 
   constructor: (options) ->
     super(options)
@@ -29,10 +30,19 @@ class Curate.Views.Albums.NewView extends Backbone.View
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 
+  cancelAndReturn: ->
+    Backbone.history.navigate('', true)
+
   change_rating: ->
+    rating = $("#rating").val()
+    if rating == "10"
+      $("#sliderAmount").css("letter-spacing","-20px")
+      $("#sliderAmount").css("padding-right","20px")
+    else
+      $("#sliderAmount").css("letter-spacing","normal")        
+      $("#sliderAmount").css("padding-right","0px")
     $("#sliderAmount").html($("#rating").val())
-    $("#sliderAmount").css("color",@model.rating_color($("#rating").val()))
-    $(".rating_header").css("color",@model.rating_color($("#rating").val()))
+    $("#sliderAmount").css("background-color",@model.rating_color($("#rating").val()))
     $("#rating").css("background-color",@model.rating_color($("#rating").val()))
 
   render: ->

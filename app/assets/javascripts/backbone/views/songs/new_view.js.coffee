@@ -6,6 +6,7 @@ class Curate.Views.Songs.NewView extends Backbone.View
   events:
     "submit #new-song": "save"
     "change #rating": "change_rating"
+    "click #cancel": "cancelAndReturn"
 
   constructor: (options) ->
     super(options)
@@ -30,12 +31,18 @@ class Curate.Views.Songs.NewView extends Backbone.View
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 
+  cancelAndReturn: ->
+    Backbone.history.navigate('', true)
+
   getEmbed: (url_input)->
       if (/soundcloud/.test(url_input))
         @getSoundCloudCode(url_input)
       else
         if (/uri/.test(url_input))
           @getSpotifyCode(url_input)
+        else
+          if (/youtu/.test(url_input))
+            @getYouTubeCode(url_input)
 
   getSoundCloudCode: (url) ->
     $.getJSON "http://soundcloud.com/oembed/?url=#{url}", {}, (json, response) ->
@@ -49,6 +56,13 @@ class Curate.Views.Songs.NewView extends Backbone.View
     thing = url.match(/uri(.*)/)
     thing = JSON.stringify(thing).substring(1, thing.length)
     return thing
+
+  getYouTubeCode: (url) ->
+    ytid = JSON.stringify(url.match(/v=(.){11}/)[0])
+    # if you want to eliminate the v= then include the next line
+    # ytid = ytid[ 2..11]
+    return ytid
+
 
   change_rating: ->
     rating = $("#rating").val()

@@ -439,13 +439,19 @@ label{
 
 }
 
-#user_email, #user_password, #user_password_confirmation, #user_username{
+#user_email, #user_password, #user_password_confirmation, #user_username, #user_current_password{
   width: 97%;
   height: 30px;
   border-radius: 2px;
   border:none;
   margin-top: 8px;
   margin-bottom: 10px;
+}
+
+#save_account_edits_button{
+  margin: 0 auto;
+  float: none;
+  text-align: center;
 }
 
 .devise_info_holder{
@@ -542,4 +548,13 @@ a.visited{
 
 #make_album_prompt, .red{
   color: #FF530F;
+}
+
+.centered{
+  text-align: center;
+}
+
+#cancel_button{
+  float: none;
+  margin: 0 auto;
 }

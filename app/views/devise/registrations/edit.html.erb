@@ -11,29 +11,32 @@
         <div class="row-fluid">
           <div class="span6">
             <div>
-            <%= f.email_field :email, :autofocus => true, :placeholder => "Email" %></div>
+            <%= f.email_field :email, :autofocus => true, :class => "account_input", :placeholder => "Email" %></div>
 
             <div>
-            <%= f.email_field :username, :autofocus => true, :placeholder => "Username" %></div>
+            <%= f.email_field :username, :autofocus => true, :class => "account_input", :placeholder => "Username" %></div>
 
             <div>
-            <%= f.password_field :password, :autocomplete => "off", :placeholder => "New Password (optional)" %></div>
+            <%= f.password_field :password, :autocomplete => "off", :class => "account_input", :placeholder => "New Password (optional)" %></div>
 
             <div>
-            <%= f.password_field :password_confirmation, :placeholder => "Confirm New Password" %></div>
+            <%= f.password_field :password_confirmation, :class => "account_input", :placeholder => "Confirm New Password" %></div>
           </div>
           <div class="span6">
             <div>
-              Save These Changes
-              <%= f.password_field :current_password, :placeholder => "Enter Curent Password" %></div>
-              <div><%= f.submit "Save", :class => "devise_button" %></div>
+              <%= f.password_field :current_password, :class => "account_input", :placeholder => "Enter Curent Password to Save" %></div>
+              <div class="centered"><%= f.submit "Save Changes", :class => "devise_button", :id => "save_account_edits_button" %></div>
+              </br></br></br></br></br>
+              <div class="centered">
+                Not Into It?</br>
+                <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure you want to cancel? This cannot be undone." }, :class => "devise_button", :id =>"cancel_button", :method => :delete %>
+                <%= link_to "Back", :back %>
+              </div>
           </div>
         </div>
       <% end %>
       <div class="row-fluid">
         <div class="span6 offset6">
-          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-          <%= link_to "Back", :back %>
         </div>
       </div>
     </div>
@@ -42,24 +45,14 @@
     <div class="row-fluid dark_gray">
       <div class="span2 nopad nomarg">
         <div id="devise_holder">
-          <% if user_signed_in? %>
-            <div class="devise_link">
-              <a href="/<%=current_user.username%>"> My Page </a>
-            </div>
-            <div class="devise_link">
-              <a href="/users/edit"> My Account </a>
-            </div>
-            <div class="devise_link">
-              <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-            </div>
-          <% else %>
-            <div class="devise_link">
-              <a href="/users/sign_up"> Sign Up </a>
-            </div>
-            <div class="devise_link">
-              <a href="/users/sign_in"> Sign In </a>
-            </div>
-          <% end %>
+          <div class="devise_link_holder">
+          <a class="devise_link" href="/<%=current_user.username%>"> My Page </a>
+        </div>
+        <div class="devise_link_holder">
+          <a class="devise_link" href="/users/edit"> My Account </a>
+        </div>
+        <div class="devise_link_holder">
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "devise_link" %>
         </div>
       </div>
     </div>

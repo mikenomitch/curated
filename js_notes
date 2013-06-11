@@ -1,0 +1,54 @@
+// In the html file initially
+<object id="player"
+  type="application/x-shockwave-flash" 
+  allowscriptaccess="always" allowfullscreen="true" width="100%" height="420">
+</object>
+
+// In the js file
+$(window).load(
+  loadIFrameApi()
+);
+
+function loadIFrameApi(){
+    var tag = document.createElement('script');
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+
+function onYouTubeIframeAPIReady() {
+  loadFrame();
+}
+
+function loadFrame(){
+    player = new YT.Player('player', {
+      height: '400',
+      width: '100%',
+      videoId: youtube_id,
+      playerVars: {
+        autoplay: 1,
+        controls: 1,
+        autohide: 2,
+        modestbranding: 0,
+        rel: 0,
+        fs: 1,
+        showinfo: 0,
+        start: seconds,
+        theme: "dark",
+        iv_load_policy: 3,
+        },
+      events: {
+        'onReady': onPlayerReady,
+      }
+    }
+  )
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+// In when you click a tag
+function changeTime(tag_seconds){
+  player.seekTo(tag_seconds, true);
+}

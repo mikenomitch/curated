@@ -4,7 +4,7 @@
       <div class="span6">
 
         <div class="field">
-          <input type="text" name="spotify_url" id="spotify_url" value="<%= @spotify_url %>" placeholder="SoundCloud, YouTube or Spotify URL" class="input_field">
+          <input type="text" name="temporary_url" id="temporary_url" value="<%= @temporary_url %>" placeholder="SoundCloud, YouTube or Spotify URL" class="input_field">
         </div>
 
         <div class="field">

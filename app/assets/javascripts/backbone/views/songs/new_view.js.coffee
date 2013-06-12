@@ -19,10 +19,8 @@ class Curate.Views.Songs.NewView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    user_input_url = @model.get("temporary_url")
-    @model.setEmbed(user_input_url)
+    # @model.setEmbed(user_input_url)
     @model.unset("errors")
-    @model.unset("temporary_url")
     @collection.create(@model.toJSON(),
       success: (song) =>
         @model = song

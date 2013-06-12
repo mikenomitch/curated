@@ -19,9 +19,7 @@ class Curate.Views.Albums.NewView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-
     @model.unset("errors")
-
     @collection.create(@model.toJSON(),
       success: (album) =>
         @model = album

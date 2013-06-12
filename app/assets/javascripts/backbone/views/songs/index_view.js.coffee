@@ -14,7 +14,7 @@ class Curate.Views.Songs.IndexView extends Backbone.View
     @$("#make_album_prompt").hide()
 
   noSongs: =>
-    @$("#albums-table").prepend(@no_songs_template)
+    @$("#songs-table").prepend(@no_songs_template)
 
   addAll: () =>
     @options.songs.each(@addOne)

@@ -1,8 +1,6 @@
 class AlbumsController < ApplicationController
 
-  respond_to :json
-  
-  before_filter :load_left_rail
+  before_filter :load_left_rail, :except => [:update]
 
   def load_left_rail
    @load_left_rail = true
@@ -11,7 +9,12 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.find_by_username(params[:username])
+    @albums = Album.where(:user_id => User.find_by_username(params[:username]))
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @songs }
+    end
   end
 
   # GET /albums/1
@@ -29,7 +32,6 @@ class AlbumsController < ApplicationController
   # GET /albums/new.json
   def new
     @album = Album.new
-    @album.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +47,10 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
+    puts params[:album]
     @album = Album.new(params[:album])
+    @album.user = current_user
+    @album.save
 
     respond_to do |format|
       if @album.save
@@ -60,26 +65,21 @@ class AlbumsController < ApplicationController
 
   # PUT /albums/1
   # PUT /albums/1.json
-  def update
+def update
     @album = Album.find(params[:id])
-    @album.update_attributes(params[:album])
-    @album.save
-
-    respond_to do |format|
-      if @album.update_attributes(params[:album])
-        # format.html { redirect_to @album, notice: 'Album was successfully updated.' }
-        format.json { head :no_content }
-      else
-        # format.html { render action: "edit" }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
+    if @album.user = current_user
+      respond_to do |format|
+        if @album.update_attributes(params[:album])
+          format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @album.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
-  def get_user
-    @viewed_user = User.find_by_username("okinawasteel")
-    render :text => @viewed_user.to_json
-  end
 
   # DELETE /albums/1
   # DELETE /albums/1.json

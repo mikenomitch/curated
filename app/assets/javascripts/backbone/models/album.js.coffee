@@ -1,7 +1,5 @@
 class Curate.Models.Album extends Backbone.Model
-  paramRoot: '/users/okinawasteel/albums/'
-  urlRoot: "/users/okinawasteel/albums/"
-  idAttribute: "id"
+  paramRoot: 'album'
 
   # ----------------------------------------------
   # DEFAULTS ------------------------------------
@@ -10,7 +8,6 @@ class Curate.Models.Album extends Backbone.Model
   defaults:
     name: null
     band: null
-    band_id: null
     rating: null
     review: null
     input_url: null

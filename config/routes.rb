@@ -9,7 +9,7 @@ Curate::Application.routes.draw do
   resources :songs
   resources :albums
 
-  get "albums/index"
+  # get "albums/index"
   root :to => "pages#index"
 
   post "users/sign_in"
@@ -17,8 +17,8 @@ Curate::Application.routes.draw do
   post "users/edit"
 
   match "/:username" => "albums#index"
-  match "/:username/albums" => "albums#index", :via => [:get, :post]
-  match "/:username/albums/:id" => "albums#update", :via => [:get, :post]
+  match "/:username/albums" => "albums#index"
+  # match "/:username/albums/:id" => "albums#update", :via => [:get, :post]
   match "/:username/songs" => "songs#index"
   match "/:username/return_user" => "albums#get_user"
   match "/:username/albums/return_user" => "albums#get_user"

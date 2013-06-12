@@ -57,17 +57,22 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.2)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    libxml-ruby (2.6.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.4)
+    multi_xml (0.5.4)
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -136,7 +141,9 @@ DEPENDENCIES
   devise
   eco (~> 1.0.0)
   eco-source (~> 1.1.0.rc.1)
+  httparty
   jquery-rails
+  libxml-ruby
   pg
   rails (= 3.2.13)
   rails-backbone

@@ -17,11 +17,12 @@ gem "eco-source", "~> 1.1.0.rc.1"
 
 gem "eco", "~> 1.0.0"
 
+gem "libxml-ruby"
+
 gem 'devise'
 
 # For parsig the soundcloud json request
-require 'httparty'
-require 'json'
+gem 'httparty'
 
 # Gems used only for assets and not required
 # in production environments by default.

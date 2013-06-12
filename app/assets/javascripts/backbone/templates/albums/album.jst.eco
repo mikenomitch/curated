@@ -2,7 +2,9 @@
   <div class="row-fluid">
     <div class="span5">
       <div class="album-image-holder">
-        <img src="<%=@image_url%>" class="album-image"></img>
+        <i class="icon-play-circle play_button" id="play_button_for_<%=@id%>"></i>
+        <img src="<%=@image_url%>" class="album-image" id="album_<%=@id%>_image"></img>
+        <span id="album_<%=@id%>_player" class="hidden_player">
       </div>
     </div>
     <div class="span7 centered_text album-description">
@@ -18,7 +20,8 @@
       <div class="micro-review" style="color: <%=@rating_color%>">
         <em>"<%= @review %>"</em>
       </div>
-        <!-- <a href="#<%=@id%>/edit"> <span class="nav_link">Edit</span> </a> -->
+      <div id="edit_holder" class="edit_holder">
+      </div>
     </div>
   </div>
 </div>

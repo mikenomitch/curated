@@ -3,39 +3,44 @@
     <div class="span6">
 
       <div class="field">
-        <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
-      </div>
-
-      <div class="field">
+        <div class="edit_label"> Album: </div>
         <input type="text" name="name" id="name" value="<%= @name %>" placeholder="Album Title" class="input_field top_input">
       </div>
 
       <div class="field">
+        <div class="edit_label"> Artist: </div>
         <input type="text" name="band" id="band" value="<%= @band %>" placeholder="Band" class="input_field">
       </div>
 
       <div class="field">
+        <div class="edit_label">Image URL:</div>
         <input type="url" name="image_url" id="image_url" value="<%= @image_url %>" placeholder="Album URL" class="input_field">
       </div>
+
+      <div class="field">
+        <div class="edit_label">SoundCloud, YouTube or Spotify URL:</div>
+        <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
+      </div>
+
     </div>
     <div class="span6 closer_left">
       <div class="field all_centered left_a_bit">
-        <div class="rating_header" style="color: <%=@rating_color%>">
+        <div class="rating_header_for_edit">
           Rating:
         </div>
-        <div id="sliderAmount" style="color: <%=@rating_color%>">
+        <div id="sliderAmount" class="sliderAmount_for_edit" style="background-color: <%=@rating_color%>">
           <%= @rating %>
         </div>​
         <input id="rating" name="rating" type="range" min="0" max="10" step="1" value="<%= @rating %>" class="input_field all_centered" style="background-color: <%=@rating_color%>">
       </div>
 
       <div class="field all_centered left_a_bit">
-        <textarea name="review" id="review" value="<%= @review %>" placeholder="Micro-Review" class="input_field"><%= @review %></textarea>
+        <textarea name="review" id="review" value="<%= @review %>" placeholder="Micro-Review" class="input_field edit_review"><%= @review %></textarea>
       </div>
 
       <div class="actions">
-        <div class="destroy btn"> Destroy </div>
-        <div class='back_button btn'>Back</div>
+        <div class="destroy btn destroy_button"> Destroy </div>
+        <div class='back_button btn return_button'>Return</div>
       </div>
 
     </div>

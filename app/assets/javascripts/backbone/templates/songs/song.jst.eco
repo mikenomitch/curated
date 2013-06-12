@@ -21,8 +21,8 @@
       <div class="micro-review">
         <em>"<%= @review %>"</em>
       </div>
-        <div id="edit_holder" class="edit_holder">
-        </div>
+      <div id="edit_holder" class="edit_holder">
+      </div>
     </div>
   </div>
 </div>

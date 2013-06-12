@@ -5,8 +5,8 @@ class Curate.Views.Songs.EditView extends Backbone.View
 
   events:
     "submit #edit-song": "update"
-    "change #rating": "change_rating"
     "click .back_button": "update"
+    "change #rating": "change_rating"
 
   update: (e) ->
     e.preventDefault()

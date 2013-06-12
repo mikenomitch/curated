@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
 
-  before_filter :load_left_rail, :except => [:update]
+  before_filter :load_left_rail, :except => [:update] 
 
   def load_left_rail
    @load_left_rail = true

@@ -19,6 +19,10 @@ gem "eco", "~> 1.0.0"
 
 gem 'devise'
 
+# For parsig the soundcloud json request
+require 'httparty'
+require 'json'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

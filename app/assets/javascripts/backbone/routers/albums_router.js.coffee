@@ -23,6 +23,8 @@ class Curate.Routers.AlbumsRouter extends Backbone.Router
     album = @albums.get(id)
     @view = new Curate.Views.Albums.ShowView(model: album)
     $("#albums").html(@view.render().el)
+    @view.checkForHover()
+
 
   edit: (id) ->
     @renderIndexIfItIsntThere()

@@ -67,6 +67,11 @@ function directToUser(){
   }
 }
 
+// If you want the play buttons to hide whenever you scroll
+// $(document).scroll(function(){
+//   $(".play_button").hide()
+// });
+
 // THE YOUTUBE LOADER
 
 // var div_holder = {

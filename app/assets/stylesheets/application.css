@@ -117,6 +117,11 @@ html, body {
   max-height: 281px;
 }
 
+/*This is for page load hover*/
+.album-image:hover{
+  font-size: 27px;
+}
+
 .album-image, .song-image{
   margin: 0 auto; 
   border-radius: 2px;

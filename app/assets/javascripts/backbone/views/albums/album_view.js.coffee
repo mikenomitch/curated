@@ -6,9 +6,10 @@ class Curate.Views.Albums.AlbumView extends Backbone.View
   events:
     "click .destroy" : "destroy"
     "click .album-image" : "showPlayer"
-    "mouseover .album-image" : "showPlayButton"
+    # "mouseover .album-image" : "showPlayButton"
     "hover .album-image" : "showPlayButton"
-    "mouseover .play_button" : "showPlayButton"
+    # "mouseover .play_button" : "showPlayButton"
+    "hover .play_button" : "showPlayButton"
     "mouseout .album-image" : "hidePlayButton"
     "hover .tile" : "hidePlayButton"
     "click .play_button" : "showPlayer"
@@ -46,3 +47,11 @@ class Curate.Views.Albums.AlbumView extends Backbone.View
     $("#album_"+@model.attributes.id+"_image").hide()
     $("#album_"+@model.attributes.id+"_player").show()
     SC.Widget("widget_"+@model.attributes.id).play()
+
+  checkForHover: ->
+    alert('fire the missile!')
+    if $(".album-image").css('font-size') == "27px"
+      showPlayButton()
+
+
+

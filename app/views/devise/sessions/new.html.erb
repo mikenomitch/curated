@@ -21,20 +21,20 @@
     <div class="row-fluid dark_gray">
       <div id="devise_holder">
         <% if user_signed_in? %>
-          <div class="devise_link">
+          <div class="devise_link_holder">
             <a href="/<%=current_user.username%>"> My Page </a>
           </div>
-          <div class="devise_link">
+          <div class="devise_link_holder">
             <a href="/users/edit"> My Account </a>
           </div>
-          <div class="devise_link">
+          <div class="devise_link_holder">
             <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
           </div>
         <% else %>
-          <div class="devise_link">
+          <div class="devise_link_holder">
             <a href="/users/sign_up"> Sign Up </a>
           </div>
-          <div class="devise_link">
+          <div class="devise_link_holder">
             <a href="/users/sign_in"> Sign In </a>
           </div>
         <% end %>

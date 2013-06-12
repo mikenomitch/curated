@@ -14,7 +14,7 @@
             <%= f.email_field :email, :autofocus => true, :class => "account_input", :placeholder => "Email" %></div>
 
             <div>
-            <%= f.email_field :username, :autofocus => true, :class => "account_input", :placeholder => "Username" %></div>
+            <%= f.text_field :username, :autofocus => true, :class => "account_input", :placeholder => "Username" %></div>
 
             <div>
             <%= f.password_field :password, :autocomplete => "off", :class => "account_input", :placeholder => "New Password (optional)" %></div>
@@ -26,15 +26,14 @@
             <div>
               <%= f.password_field :current_password, :class => "account_input", :placeholder => "Enter Curent Password to Save" %></div>
               <div class="centered"><%= f.submit "Save Changes", :class => "devise_button", :id => "save_account_edits_button" %></div>
-              </br></br></br></br></br>
+              </br></br></br></br>
+              <% end %>
               <div class="centered">
                 Not Into It?</br>
                 <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure you want to cancel? This cannot be undone." }, :class => "devise_button", :id =>"cancel_button", :method => :delete %>
-                <%= link_to "Back", :back %>
               </div>
           </div>
         </div>
-      <% end %>
       <div class="row-fluid">
         <div class="span6 offset6">
         </div>

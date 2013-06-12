@@ -22,6 +22,8 @@ class Curate.Views.Albums.IndexView extends Backbone.View
   addOne: (album) =>
     view = new Curate.Views.Albums.AlbumView({model : album})
     @$("tbody").prepend(view.render().el)
+    # This exists if you can check for hover easily
+    # view.checkForHover()
 
   sideBarRender: ->
     $("#user_name").html(thisUser)

@@ -58,12 +58,18 @@ function replaceMiddle(div_name){
  
   }
 
-function directToUser(){
-  if( $("#user_search").val() == "Search for a Mathematical Concept"){
-    fauxAlert("Select a Reviewer.");
+function directToUser(search_name){
+  if (search_name == "user_search"){
+    value = $("#user_search").val()
   }
   else{
-    window.location.href="/"+$("#user_search").val();
+    value = $("#bottom_search").val()  
+  }
+  if( value == "Search for a User"){
+    fauxAlert("Select a User.");
+  }
+  else{
+    window.location.href="/"+value;
   }
 }
 

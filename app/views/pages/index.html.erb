@@ -2,13 +2,13 @@
   <div class="tile all_centered equalpadding_forty short_tile" id="index_tile">
     </br>
     <div class="title">
-      two cents
+      <span id="logo_two">2</span>cents
     </div>
     <div class="subtitle">
       thoughts on music </br> from the people that matter
     </div>
     <div class="subtitle">
-      <select id="user_search" data-placeholder="Search for a User" onChange="directToUser()">
+      <select id="user_search" data-placeholder="Search for a User" onChange="directToUser('user_search')">
         <option></option>
         <% User.all.each do |user| %>
           <option> <%= user.username %> </option>
@@ -26,13 +26,13 @@
   </script>
 
   <style type="text/css">
-  .select2-container .select2-choice div {
-    display: none;
-  }
+    .select2-container .select2-choice div {
+      display: none;
+    }
 
-  #select2-drop{
-    margin-top: 10px;
-    border-color: #5897fb;
-  }
+    #select2-drop{
+      margin-top: 10px;
+      border-color: #5897fb;
+    }
   </style>
 </div>

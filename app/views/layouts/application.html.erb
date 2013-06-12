@@ -28,6 +28,18 @@
         </div>
       </div>
       <div id="devise_holder">
+        <div class="devise_link_holder" id="search_holder">
+          <div id="search_field">
+            <i class="icon-search" id="search_icon"> 
+              <select id="bottom_search" onChange="directToUser()">
+                <option></option>
+                <% User.all.each do |user| %>
+                  <option> <%= user.username %> </option>
+                <% end %>
+              </select>
+            </i>
+          </div>
+        </div>
         <% if user_signed_in? %>
           <div class="devise_link_holder">
             <a class="devise_link" href="/<%=current_user.username%>"> My Page </a>
@@ -61,3 +73,11 @@
 <div id="bottom_pad">
 </div>
 </html>
+
+  <script >
+    $("#bottom_search").select2({
+      placeholder: "Find a Reviewer",
+      allowClear: false,
+      minimumInputLength: 1
+     });
+  </script>

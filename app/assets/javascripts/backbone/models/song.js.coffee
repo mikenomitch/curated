@@ -43,11 +43,13 @@ class Curate.Models.Song extends Backbone.Model
           @getYouTubeCode(url_input)
 
   getSoundCloudCode: (url) =>
-    $.getJSON "http://soundcloud.com/oembed/?url=#{url}", {}, (json, response) ->
+    hi = $.getJSON "http://soundcloud.com/oembed/?url=#{url}", {}, (json, response) =>
       iframe_html = json.html
       shortened_url = JSON.stringify(iframe_html.match(/src=(.*)&show_artwork/)[0])
       shortened_url = shortened_url.substring(7, shortened_url.length - 1)
+      return "goosefraba"
       @set("spotify_url", shortened_url)
+      
 
   getSpotifyCode: (url) =>
     shortened_url = url.match(/uri(.*)/)

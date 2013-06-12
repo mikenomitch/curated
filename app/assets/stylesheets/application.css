@@ -87,7 +87,8 @@ html, body {
 }
 
 .tile{
-  background-color:#222;
+  background-color:rgba(30,30,30,0.9);
+  /*background-color: #222;*/
   color: #EEE;
   width: 700px;
   min-height: 330px;
@@ -311,6 +312,34 @@ html, body {
   margin-bottom: 10px;
 }
 
+#search_holder{
+  position: fixed;
+  /*top: 125px;*/
+  bottom:20px;
+  right: 10px;
+  color: #CCC;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+#search_icon{
+  color: #777;
+  font-size: 1.2em;
+  margin-left: 7px;
+}
+
+#bottom_search{
+  width: 80%;
+}
+
+#search_field{
+  width: 230px;
+  height: 28px;
+  border-radius: 4px;
+  background-color: #DDD;
+  padding-top: 4px;
+}
+
 input[type="text"],input[type="url"]{
   height: 40px;
   font-size: 1.2em;
@@ -417,6 +446,28 @@ left: 20px;
 #s2id_user_search :div{
   display: none;
   background-color: red;
+}
+
+#s2id_bottom_search{
+  /*margin-top: 40px;*/
+  width: 100%;
+  /*height: 30px;*/
+  cursor: text;
+}
+
+#s2id_bottom_search :div{
+  background-color: red;
+}
+
+#s2id_bottom_search :first-child {
+  height: 40px;
+  line-height: 40px;
+  cursor: text;
+}
+
+#s2id_bottom_search :div{
+  display: none;
+  /*background-color: red;*/
 }
 
 .select2-container .select2-choice div {
@@ -557,4 +608,12 @@ a.visited{
 #cancel_button{
   float: none;
   margin: 0 auto;
+}
+
+.home_holder{
+  position: fixed;
+  bottom: 10px;
+  right: 5px;
+  font-size: 2em;
+  color: #DDD;
 }

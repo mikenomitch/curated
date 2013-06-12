@@ -4,8 +4,7 @@
       <div class="album-image-holder">
         <i class="icon-play-circle play_button" id="play_button_for_<%=@id%>"></i>
         <img src="<%=@image_url%>" class="album-image" id="song_<%=@id%>_image"></img>
-        <span id="song_<%=@id%>_player" class="hidden_player">
-        </span>
+        <span id="song_<%=@id%>_player" class="hidden_player"></span>
       </div>
     </div>
     <div class="span7 centered_text album-description">

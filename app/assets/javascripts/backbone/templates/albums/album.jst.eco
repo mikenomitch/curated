@@ -4,20 +4,20 @@
       <div class="album-image-holder">
         <i class="icon-play-circle play_button" id="play_button_for_<%=@id%>"></i>
         <img src="<%=@image_url%>" class="album-image" id="album_<%=@id%>_image"></img>
-        <span id="album_<%=@id%>_player" class="hidden_player">
+        <span id="album_<%=@id%>_player" class="hidden_player"></span>
       </div>
     </div>
     <div class="span7 centered_text album-description">
-      <div class="song-name" style="color: <%=@rating_color%>">
+      <div class="song-name">
        <%= @name %>
       </div>
-      <div class="band-name" style="color: <%=@rating_color%>">
+      <div class="band-name">
         <%= @band %>
       </div>
-      <div class="album-rating" style="color: <%=@rating_color%>">
+      <div class="album-rating" style="background-color: <%=@rating_color%>">
         <%= @rating %>
       </div>
-      <div class="micro-review" style="color: <%=@rating_color%>">
+      <div class="micro-review">
         <em>"<%= @review %>"</em>
       </div>
       <div id="edit_holder" class="edit_holder">

@@ -3,7 +3,7 @@
     <div class="row-fluid">
       <div class="span6">
         <div class="field">
-          <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
+          <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="SoundCloud, YouTube or Spotify URL" class="input_field">
         </div>
       
         <div class="field">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="field">
-          <input type="url" name="image_url" id="image_url" value="<%= @image_url %>" placeholder="Album URL" class="input_field">
+          <input type="url" name="image_url" id="image_url" value="<%= @image_url %>" placeholder="Album Art URL" class="input_field">
         </div>
       </div>
       <div class="span6 closer_left">

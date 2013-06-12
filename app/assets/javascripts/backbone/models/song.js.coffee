@@ -9,8 +9,8 @@ class Curate.Models.Song extends Backbone.Model
     band: null
     rating: null
     review: null
-    spotify_url: null
-    other_url: null
+    input_url: null
+    embed_url: null
     image_url: null
 
 
@@ -48,19 +48,19 @@ class Curate.Models.Song extends Backbone.Model
       shortened_url = JSON.stringify(iframe_html.match(/src=(.*)&show_artwork/)[0])
       shortened_url = shortened_url.substring(7, shortened_url.length - 1)
       return "goosefraba"
-      @set("spotify_url", shortened_url)
+      @set("input_url", shortened_url)
       
 
   getSpotifyCode: (url) =>
     shortened_url = url.match(/uri(.*)/)
     shortened_url = JSON.stringify(shortened_url).substring(1, shortened_url.length)
-    @set("spotify_url", shortened_url)
+    @set("input_url", shortened_url)
 
   getYouTubeCode: (url) =>
     ytid = JSON.stringify(url.match(/v=(.){11}/)[0])
     # if you want to eliminate the v= then include the next line
     # ytid = ytid[ 2..11]
-    @set("spotify_url", ytid)
+    @set("input_url", ytid)
 
 
 class Curate.Collections.SongsCollection extends Backbone.Collection

@@ -3,7 +3,7 @@
     <div class="span6">
 
       <div class="field">
-        <input type="text" name="spotify_url" id="spotify_url" value="<%= @spotify_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
+        <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
       </div>
 
       <div class="field">

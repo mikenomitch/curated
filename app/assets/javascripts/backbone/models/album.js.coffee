@@ -13,8 +13,8 @@ class Curate.Models.Album extends Backbone.Model
     band_id: null
     rating: null
     review: null
-    spotify_url: null
-    other_url: null
+    input_url: null
+    embed_url: null
     image_url: null
 
   # ----------------------------------------------

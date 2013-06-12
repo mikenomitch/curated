@@ -4,8 +4,8 @@ class CreateSongs < ActiveRecord::Migration
       t.string :name
       t.string :band
       t.string :image_url
-      t.string :spotify_url
-      t.string :other_url
+      t.string :input_url
+      t.string :embed_url
       t.integer :rating
       t.text :review
       t.references :user

@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(:version => 20130604151427) do
     t.string   "name"
     t.string   "band"
     t.string   "image_url"
-    t.string   "spotify_url"
-    t.string   "other_url"
+    t.string   "input_url"
+    t.string   "embed_url"
     t.integer  "rating"
     t.text     "review"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "bands", :force => true do |t|
@@ -37,13 +37,13 @@ ActiveRecord::Schema.define(:version => 20130604151427) do
     t.string   "name"
     t.string   "band"
     t.string   "image_url"
-    t.string   "spotify_url"
-    t.string   "other_url"
+    t.string   "input_url"
+    t.string   "embed_url"
     t.integer  "rating"
     t.text     "review"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

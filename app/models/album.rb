@@ -31,7 +31,7 @@ class Album < ActiveRecord::Base
     # unparsed_embed_code = content.root.find_first('html').content
     # parsed_embed = /src=(.*)show_artwork/.match unparsed_embed_code
     # self.embed_url = parsed_embed[1][1..-2]
-    self.embed_url = url
+    # self.embed_url = "https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F37889463"
   end
 
   def setSpotifyCodes

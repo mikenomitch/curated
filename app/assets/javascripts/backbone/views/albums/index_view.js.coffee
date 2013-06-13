@@ -7,6 +7,11 @@ class Curate.Views.Albums.IndexView extends Backbone.View
   events:
     "click .first_album_button" : "hidePrompt"
 
+  # player_ids: []
+
+  # push_id:(album) ->
+  #   @player_ids.push(album.id)
+
   initialize: () ->
     @options.albums.bind('reset', @addAll)
 
@@ -17,6 +22,7 @@ class Curate.Views.Albums.IndexView extends Backbone.View
     @$("#albums-table").prepend(@no_albums_template)
 
   addAll: () =>
+    # @options.albums.each(@push_id)
     @options.albums.each(@addOne)
 
   addOne: (album) =>
@@ -24,6 +30,15 @@ class Curate.Views.Albums.IndexView extends Backbone.View
     @$("tbody").prepend(view.render().el)
     # This exists if you can check for hover easily
     # view.checkForHover()
+
+  # closePlayers: (exception)->
+  #   @player_ids - [exception]
+  #   @player_ids.each(@close)
+
+  # close: (id) ->
+  #   $("#song_"+id+"_image").show()
+  #   $("#song_"+id+"_player").hide()
+  #   SC.Widget("widget_"+id).pause()
 
   sideBarRender: ->
     $("#user_name").html(thisUser)

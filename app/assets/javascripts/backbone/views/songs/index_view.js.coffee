@@ -7,6 +7,8 @@ class Curate.Views.Songs.IndexView extends Backbone.View
   events:
     "click .first_album_button" : "hidePrompt"
 
+  # player_ids: []
+
   initialize: () ->
     @options.songs.bind('reset', @addAll)
 
@@ -18,10 +20,15 @@ class Curate.Views.Songs.IndexView extends Backbone.View
 
   addAll: () =>
     @options.songs.each(@addOne)
+    # @$("tbody").prepend("@player_ids")
 
   addOne: (song) =>
+    # @player_ids.push(song.id)
     view = new Curate.Views.Songs.SongView({model : song})
     @$("tbody").prepend(view.render().el)
+
+  # closePlayers: (exception)->
+  #   alert(@player_ids)
 
   sideBarRender: ->
     $("#user_name").html(thisUser)

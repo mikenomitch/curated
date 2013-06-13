@@ -8,8 +8,6 @@ class Album < ActiveRecord::Base
   end
 
   def set_embed_input
-    puts "this is the input_url"
-    puts self.input_url
     if self.input_url.include?("soundcloud")
       setSoundCloudCode
     elsif self.input_url.include?("uri") || self.input_url.include?("spotify")
@@ -22,15 +20,13 @@ class Album < ActiveRecord::Base
   end
 
   def setSoundCloudCode
-    # require 'xml'
-    # Web search for "madonna"
-    url = self.input_url
-    # xml_data = Net::HTTP.get_response(URI.parse(url)).body
-    # source = XML::Parser.string(xml_data)
-    # content = source.parse
-    # unparsed_embed_code = content.root.find_first('html').content
-    # parsed_embed = /src=(.*)show_artwork/.match unparsed_embed_code
-    # self.embed_url = parsed_embed[1][1..-2]
+    puts "right before the party"
+    require 'httparty'
+    puts "right after the party"
+    response = HTTParty.get('http://soundcloud.com/oembed/?url='+self.input_url)
+    html = response.parsed_response["oembed"]["html"]
+    parsed_embed = /src=(.*)show_artwork/.match html
+    self.embed_url = parsed_embed[1][1..-2]
     # self.embed_url = "https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F37889463"
   end
 

@@ -20,9 +20,7 @@ class Album < ActiveRecord::Base
   end
 
   def setSoundCloudCode
-    puts "right before the party"
     require 'httparty'
-    puts "right after the party"
     response = HTTParty.get('http://soundcloud.com/oembed/?url='+self.input_url)
     html = response.parsed_response["oembed"]["html"]
     parsed_embed = /src=(.*)show_artwork/.match html

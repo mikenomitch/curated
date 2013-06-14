@@ -47,12 +47,3 @@ class Curate.Views.Albums.AlbumView extends Backbone.View
     $("#album_"+@model.attributes.id+"_image").hide()
     $("#album_"+@model.attributes.id+"_player").show()
     SC.Widget("widget_"+@model.attributes.id).play()
-
-  # checkForHover: ->
-  #   delay = (ms, func) -> setTimeout func, ms
-  #   delay 1000, ->
-  #       alert("it is over")
-  #       showPlayButton()
-
-
-

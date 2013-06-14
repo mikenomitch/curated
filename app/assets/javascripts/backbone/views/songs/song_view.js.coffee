@@ -24,7 +24,7 @@ class Curate.Views.Songs.SongView extends Backbone.View
   render: () ->
     json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating), embedDiv: @model.embedDiv(@model.attributes.input_url), showEdit: true})
     @$el.html(@template(json))
-    @$(".hidden_player").html(@model.embedDiv(@model.attributes.input_url,@model.attributes.id ))
+    @$(".hidden_player").html(@model.embedDiv(@model.attributes.embed_url,@model.attributes.id ))
     @$("#edit_holder").html(@showEdit(window.showAdd, @model.attributes.id, window.currentUser))
     if @model.attributes.rating == 10
       @$(".album-rating").css("letter-spacing","-8px")

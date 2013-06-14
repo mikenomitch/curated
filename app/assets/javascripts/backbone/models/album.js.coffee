@@ -24,16 +24,13 @@ class Curate.Models.Album extends Backbone.Model
 
   embedDiv: (stored_url, id)->
     if (/soundcloud/.test(stored_url))
-        return '<iframe id="widget_'+id+'" width="281" height="281" scrolling="no" frameborder="no" src="'+stored_url+'&show_artwork=true&auto_play=false&show_user=false&show_comments=false&liking=false&buying=false&sharing=false&show_playcount=false"></iframe>'
+        return '<iframe id="widget_'+id+'" width="281" height="281" scrolling="no" frameborder="no" src="'+stored_url+'&auto_play=false&show_user=false&show_comments=false&liking=false&buying=false&sharing=false&show_playcount=false"></iframe>'
     else
       if (/uri/.test(stored_url) || /spotify/.test(stored_url))
         return '<iframe id="widget_'+id+'" src="https://embed.spotify.com/?uri='+stored_url+'" width="281" height="281" frameborder="0" allowtransparency="true"></iframe><div class="spotify_disclaimer">Note: This will open Spotify</div>'
       else
-        return '<iframe id="widget_'+id+'" width="281" height="281" src="http://www.youtube.com/embed/'+stored_url+'" frameborder="0" allowfullscreen></iframe>'
-
-
-
-
+        if /v=/.test(stored_url)
+          return '<iframe id="widget_'+id+'" width="281" height="281" src="http://www.youtube.com/embed/'+stored_url+'" frameborder="0" allowfullscreen></iframe>'
 
   # ----------------------------------------------
   # CALLBACKS --------------------------------------

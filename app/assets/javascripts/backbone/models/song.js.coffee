@@ -24,44 +24,13 @@ class Curate.Models.Song extends Backbone.Model
 
   embedDiv: (stored_url, id)->
     if (/soundcloud/.test(stored_url))
-        return '<iframe id="widget_'+id+'" width="281" height="281" scrolling="no" frameborder="no" src="'+stored_url+'=true&auto_play=false&show_user=false&show_comments=false&liking=false&buying=false&sharing=false&show_playcount=false"></iframe>'
+        return '<iframe id="widget_'+id+'" width="281" height="281" scrolling="no" frameborder="no" src="'+stored_url+'&auto_play=false&show_user=false&show_comments=false&liking=false&buying=false&sharing=false&show_playcount=false"></iframe>'
     else
       if (/uri/.test(stored_url) || /spotify/.test(stored_url))
         return '<iframe id="widget_'+id+'" src="https://embed.spotify.com/?uri='+stored_url+'" width="281" height="281" frameborder="0" allowtransparency="true"></iframe><div class="spotify_disclaimer">Note: This will open Spotify</div>'
       else
         if /v=/.test(stored_url)
-          return '<iframe id="widget_'+id+'" width="281" height="281" src="http://www.youtube.com/embed/'+stored_url[2..12]+'" frameborder="0" allowfullscreen></iframe>'
-
-  setEmbed: (url_input)->
-    if (/soundcloud/.test(url_input))
-      @getSoundCloudCode(url_input)
-    else
-      if (/uri/.test(url_input))
-        @getSpotifyCode(url_input)
-      else
-        if (/youtu/.test(url_input))
-          @getYouTubeCode(url_input)
-
-  getSoundCloudCode: (url) =>
-    hi = $.getJSON "http://soundcloud.com/oembed/?url=#{url}", {}, (json, response) =>
-      iframe_html = json.html
-      shortened_url = JSON.stringify(iframe_html.match(/src=(.*)&show_artwork/)[0])
-      shortened_url = shortened_url.substring(7, shortened_url.length - 1)
-      return "goosefraba"
-      @set("input_url", shortened_url)
-      
-
-  getSpotifyCode: (url) =>
-    shortened_url = url.match(/uri(.*)/)
-    shortened_url = JSON.stringify(shortened_url).substring(1, shortened_url.length)
-    @set("input_url", shortened_url)
-
-  getYouTubeCode: (url) =>
-    ytid = JSON.stringify(url.match(/v=(.){11}/)[0])
-    # if you want to eliminate the v= then include the next line
-    # ytid = ytid[ 2..11]
-    @set("input_url", ytid)
-
+          return '<iframe id="widget_'+id+'" width="281" height="281" src="http://www.youtube.com/embed/'+stored_url+'" frameborder="0" allowfullscreen></iframe>'
 
 class Curate.Collections.SongsCollection extends Backbone.Collection
   model: Curate.Models.Song

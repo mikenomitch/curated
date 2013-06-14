@@ -28,7 +28,7 @@ class Song < ActiveRecord::Base
     # self.embed_url = "https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F37889463"
   end
 
-  def setSpotifyCodes
+  def setSpotifyCode
     # Example URI
     # spotify:track:1fGsZsIkQkOspfsT24nQP6
     # Examply Embed Code

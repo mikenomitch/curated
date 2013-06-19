@@ -38,7 +38,7 @@
               </i> 
                 <select id="bottom_search" onChange="directToUser()">
                   <option></option>
-                  <% User.all.each do |user| %>
+                  <% User.with_reviews.each do |user| %>
                     <option> <%= user.username %> </option>
                   <% end %>
                 </select>

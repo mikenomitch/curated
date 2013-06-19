@@ -56,6 +56,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    find_by_shortcut (0.0.1)
     hike (1.2.2)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -141,6 +142,7 @@ DEPENDENCIES
   devise
   eco (~> 1.0.0)
   eco-source (~> 1.1.0.rc.1)
+  find_by_shortcut (~> 0.0.1)
   httparty
   jquery-rails
   libxml-ruby

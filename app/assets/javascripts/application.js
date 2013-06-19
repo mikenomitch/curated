@@ -69,7 +69,7 @@ function directToUser(search_name){
     fauxAlert("Select a User.");
   }
   else{
-    window.location.href="/"+value;
+    window.location.href="/"+value+"/albums";
   }
 }
 

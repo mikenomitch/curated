@@ -10,7 +10,7 @@
     <div class="subtitle">
       <select id="user_search" data-placeholder="Search for a User" onChange="directToUser('user_search')">
         <option></option>
-        <% User.all.each do |user| %>
+        <% User.with_reviews.each do |user| %>
           <option> <%= user.username %> </option>
         <% end %>
       </select>

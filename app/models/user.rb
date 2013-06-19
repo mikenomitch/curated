@@ -11,4 +11,11 @@ class User < ActiveRecord::Base
 
   has_many :albums
   has_many :songs
+
+
+  def self.with_reviews
+    all.reject{|e| (e.albums.length + e.songs.length) == 0}
+  end
+
+
 end

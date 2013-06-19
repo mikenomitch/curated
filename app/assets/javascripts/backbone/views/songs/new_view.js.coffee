@@ -25,8 +25,10 @@ class Curate.Views.Songs.NewView extends Backbone.View
       success: (song) =>
         @model = song
         Backbone.history.navigate('', true)
+        fauxAlert("Song Created")
       error: (song, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
+        fauxRedAlert("There was an error creating this song.")
     )
 
   cancelAndReturn: ->

@@ -18,6 +18,7 @@ class Curate.Views.Albums.EditView extends Backbone.View
       success: (album) =>
         @model = album
         Backbone.history.navigate('', true)
+        fauxAlert("Album Saved")
     )
 
   change_rating: ->

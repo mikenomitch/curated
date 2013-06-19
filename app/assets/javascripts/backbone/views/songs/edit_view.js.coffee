@@ -17,6 +17,7 @@ class Curate.Views.Songs.EditView extends Backbone.View
       success: (song) =>
         @model = song
         Backbone.history.navigate('', true)
+        fauxAlert("Song Saved")
     )
 
   change_rating: ->

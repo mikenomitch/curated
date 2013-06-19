@@ -24,8 +24,10 @@ class Curate.Views.Albums.NewView extends Backbone.View
       success: (album) =>
         @model = album
         Backbone.history.navigate('', true)
+        fauxAlert("Album Created")
       error: (album, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
+        fauxRedAlert("There was an error creating this album.")
     )
 
   cancelAndReturn: ->

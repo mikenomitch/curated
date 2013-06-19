@@ -73,6 +73,49 @@ function directToUser(search_name){
   }
 }
 
+
+// -----------------------------------------------
+// FLASH-MESSAGES --------------------------------
+// -----------------------------------------------
+function fauxAlert(message)
+{
+  $("#flash").html(message);
+  $("#flash").show();
+  document.getElementById("flash").style.backgroundColor='#222';
+    
+  timedHideFlashMessages();
+}
+
+function fauxRedAlert(message)
+{
+  $("#flash").html(message);
+  $("#flash").show();
+  document.getElementById("flash").style.backgroundColor='firebrick';
+    
+  timedHideFlashMessages();
+}
+
+function hideFlashMessages() {
+  $("#flash").slideUp();
+}
+    
+function timedHideFlashMessages()
+{ 
+  // FIX: Try creating two groups. This breaks.
+  // Flash messages
+  if ($("#flash").length > 0) {
+    setTimeout(hideFlashMessages, 3000);
+  }
+}
+
+$(document).ready(function() {
+  timedHideFlashMessages();
+});
+// -----------------------------------------------
+// END-FLASH-MESSAGES --------------------------------
+// -----------------------------------------------
+
+
 // If you want the play buttons to hide whenever you scroll
 // $(document).scroll(function(){
 //   $(".play_button").hide()

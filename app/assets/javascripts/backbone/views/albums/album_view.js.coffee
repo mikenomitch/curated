@@ -17,9 +17,11 @@ class Curate.Views.Albums.AlbumView extends Backbone.View
   tagName: "tr"
 
   destroy: () ->
-    @model.destroy()
-    this.remove()
-    return false
+    if confirm "Are you sure you want to delete this album?"
+      @model.destroy()
+      this.remove()
+      fauxRedAlert("This album has been deleted.")
+      return false
 
   render: () ->
     json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating), embedDiv: @model.embedDiv(@model.attributes.embed_url), showEdit: true})

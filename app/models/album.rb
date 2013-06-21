@@ -19,6 +19,10 @@ class Album < ActiveRecord::Base
     end
   end
 
+  def setNilEmbed
+    self.embed_url = "no_embed"
+  end
+
   def setSoundCloudCode
     require 'httparty'
     response = HTTParty.get('http://soundcloud.com/oembed/?url='+self.input_url)

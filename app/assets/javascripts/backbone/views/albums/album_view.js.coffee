@@ -7,8 +7,8 @@ class Curate.Views.Albums.AlbumView extends Backbone.View
     "click .destroy" : "destroy"
     "click .album-image" : "showPlayer"
     "mouseenter .album-image" : "showPlayButton"
-    "mouseenter .play_button" : "showPlayButton"
     "mousemove .album-image" : "showPlayButton"
+    "mouseenter .play_button" : "showPlayButton"
     "hover .play_button" : "showPlayButton"
     "mouseout .album-image" : "hidePlayButton"
     "hover .tile" : "hidePlayButton"
@@ -35,23 +35,31 @@ class Curate.Views.Albums.AlbumView extends Backbone.View
 
   playButtonShowable: true
 
+  embedExists: () ->
+    if @model.attributes.embed_url == "error"
+      false
+    else
+      true
+
   showEdit: (showIt,id, username) ->
     if showIt == true
       '<a class="edit_link" href="/'+username+'/albums#'+id+'/edit"> <span class="nav_link"><i class="icon-cog icon_and_edit"> Edit</i></span> </a>'
 
   showPlayButton: ->
-    if @playButtonShowable == true
-      $("#play_button_for_"+@model.attributes.id).show()
-      hide: { fixed: true }
-    if @playButtonShowable == false
-      @hidePlayButton
+    if @embedExists()
+      if @playButtonShowable == true
+        $("#play_button_for_"+@model.attributes.id).show()
+        hide: { fixed: true }
+      if @playButtonShowable == false
+        @hidePlayButton
 
   hidePlayButton: ->
     $("#play_button_for_"+@model.attributes.id).hide()    
 
   showPlayer: ->
-    $("#play_button_for_"+@model.attributes.id).hide()
-    $("#album_"+@model.attributes.id+"_image").hide()
-    $("#album_"+@model.attributes.id+"_player").show()
-    SC.Widget("widget_"+@model.attributes.id).play()
-    @playButtonShowable = false
+    if @embedExists()
+      $("#play_button_for_"+@model.attributes.id).hide()
+      $("#album_"+@model.attributes.id+"_image").hide()
+      $("#album_"+@model.attributes.id+"_player").show()
+      SC.Widget("widget_"+@model.attributes.id).play()
+      @playButtonShowable = false

@@ -25,7 +25,7 @@ html, body {
 
 #index_backgrond{
   min-height: 100%;
-  background: url("/assets/darkest.png");
+  background: url("/assets/ready.png");
   padding-top: 130px;
   padding-bottom: 260px;
   margin-bottom: -20px;
@@ -69,7 +69,7 @@ html, body {
 }
 
 #albums-body, #songs-body{
-  background: url("/assets/darkest.png");
+  background: url("/assets/ready.png");
   height: 100%;
   padding-bottom: 20px;
 }
@@ -82,7 +82,7 @@ html, body {
 
 .dark_gray{
  background-color: #222;
- background: url("/assets/darkest.png");
+ background: url("/assets/ready.png");
 }
 
 .tile{

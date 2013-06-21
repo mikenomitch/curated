@@ -17,18 +17,22 @@ class Curate.Views.Albums.NewView extends Backbone.View
     )
 
   save: (e) ->
-    e.preventDefault()
-    e.stopPropagation()
-    @model.unset("errors")
-    @collection.create(@model.toJSON(),
-      success: (album) =>
-        @model = album
-        Backbone.history.navigate('', true)
-        fauxAlert("Album Created")
-      error: (album, jqXHR) =>
-        @model.set({errors: $.parseJSON(jqXHR.responseText)})
-        fauxRedAlert("There was an error creating this album.")
-    )
+    if @model.get("name") == null || @model.get("image_url") == null || @model.get("band") == null || @model.get("rating") == null || @model.get("review") == null
+      fauxRedAlert("Fill in the whole review.")
+      return
+    else
+      e.preventDefault()
+      e.stopPropagation()
+      @model.unset("errors")
+      @collection.create(@model.toJSON(),
+        success: (album) =>
+          @model = album
+          Backbone.history.navigate('', true)
+          fauxAlert("Album Created")
+        error: (album, jqXHR) =>
+          @model.set({errors: $.parseJSON(jqXHR.responseText)})
+          fauxRedAlert("There was an error creating this album.")
+      )
 
   cancelAndReturn: ->
     Backbone.history.navigate('', true)
@@ -47,7 +51,6 @@ class Curate.Views.Albums.NewView extends Backbone.View
 
   render: ->
     @$el.html(@template(@model.toJSON() ))
-
     this.$("form").backboneLink(@model)
 
     return this

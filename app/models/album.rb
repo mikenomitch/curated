@@ -8,12 +8,14 @@ class Album < ActiveRecord::Base
   end
 
   def set_embed_input
-    if self.input_url.include?("soundcloud")
-      setSoundCloudCode
-    elsif self.input_url.include?("uri") || self.input_url.include?("spotify")
-      setSpotifyCode
-    elsif self.input_url.include?("youtu")
-      setYouTubeCode
+    if self.input_url
+      if self.input_url.include?("soundcloud")
+        setSoundCloudCode
+      elsif self.input_url.include?("uri") || self.input_url.include?("spotify")
+        setSpotifyCode
+      elsif self.input_url.include?("youtu")
+        setYouTubeCode
+      end
     else
       self.embed_url = "error"
     end

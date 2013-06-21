@@ -35,23 +35,31 @@ class Curate.Views.Songs.SongView extends Backbone.View
 
   playButtonShowable: true
 
+  embedExists: () ->
+    if @model.attributes.embed_url == "error"
+      false
+    else
+      true
+
   showEdit: (showIt,id, username) ->
     if showIt == true
       '<a class="edit_link" href="/'+username+'/songs#'+id+'/edit"> <span class="nav_link"><i class="icon-cog icon_and_edit"> Edit</i></span> </a>'
 
   showPlayButton: ->
-    if @playButtonShowable == true
-      $("#play_button_for_"+@model.attributes.id).show()
-      hide: { fixed: true }
-    else
-      @hidePlayButton
+    if @embedExists()
+      if @playButtonShowable == true
+        $("#play_button_for_"+@model.attributes.id).show()
+        hide: { fixed: true }
+      else
+        @hidePlayButton
 
   hidePlayButton: ->
     $("#play_button_for_"+@model.attributes.id).hide()    
 
   showPlayer: ->
-    $("#play_button_for_"+@model.attributes.id).hide()
-    $("#song_"+@model.attributes.id+"_image").hide()
-    $("#song_"+@model.attributes.id+"_player").show()
-    SC.Widget("widget_"+@model.attributes.id).play()
-    @playButtonShowable = false
+    if @embedExists()
+      $("#play_button_for_"+@model.attributes.id).hide()
+      $("#song_"+@model.attributes.id+"_image").hide()
+      $("#song_"+@model.attributes.id+"_player").show()
+      SC.Widget("widget_"+@model.attributes.id).play()
+      @playButtonShowable = false

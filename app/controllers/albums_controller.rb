@@ -47,7 +47,6 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    puts params[:album]
     @album = Album.new(params[:album])
     @album.user = current_user
     @album.save

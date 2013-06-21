@@ -8,7 +8,6 @@ class Curate.Views.Albums.EditView extends Backbone.View
     "click .back_button": "update"
     "change #rating": "change_rating"
 
-
   update: (e) ->
     e.preventDefault()
     e.stopPropagation()
@@ -36,7 +35,6 @@ class Curate.Views.Albums.EditView extends Backbone.View
     $("#sliderAmount").html(rating)
     $("#sliderAmount").css("background-color",@model.rating_color($("#rating").val()))
     $("#rating").css("background-color",@model.rating_color($("#rating").val()))
-
     
   render: ->
     json = $.extend(@model.toJSON(), {rating_color: @model.rating_color(@model.attributes.rating)})

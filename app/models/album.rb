@@ -15,14 +15,12 @@ class Album < ActiveRecord::Base
         setSpotifyCode
       elsif self.input_url.include?("youtu")
         setYouTubeCode
+      else
+        self.embed_url = "error"
       end
     else
       self.embed_url = "error"
     end
-  end
-
-  def setNilEmbed
-    self.embed_url = "no_embed"
   end
 
   def setSoundCloudCode

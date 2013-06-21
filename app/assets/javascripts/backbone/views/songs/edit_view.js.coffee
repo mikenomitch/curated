@@ -13,12 +13,16 @@ class Curate.Views.Songs.EditView extends Backbone.View
     e.stopPropagation()
     @model.unset("created_at", { silent: true });
     @model.unset("updated_at", { silent: true });
-    @model.save(null,
-      success: (song) =>
-        @model = song
-        Backbone.history.navigate('', true)
-        fauxAlert("Song Saved")
-    )
+    if @model.get("name") == "" || @model.get("image_url") == "" || @model.get("band") == "" || @model.get("rating") == "" || @model.get("review") == ""
+      fauxRedAlert("Fill in the whole review.")
+      return
+    else
+      @model.save(null,
+        success: (song) =>
+          @model = song
+          Backbone.history.navigate('', true)
+          fauxAlert("Song Saved")
+      )
 
   change_rating: ->
     rating = $("#rating").val()

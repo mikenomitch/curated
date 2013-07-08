@@ -18,7 +18,7 @@
       </div>
 
       <div class="field">
-        <div class="edit_label">SoundCloud, YouTube or Spotify URL:</div>
+        <div class="edit_label">SoundCloud URL, YouTube URL or Spotify URI:</div>
         <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="Spotify or SoundCloud URL" class="input_field">
       </div>
 

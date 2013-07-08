@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 # gem 'sqlite3'
 
+gem 'pg'
+
 gem "rails-backbone"
 
 gem 'chosen-rails'

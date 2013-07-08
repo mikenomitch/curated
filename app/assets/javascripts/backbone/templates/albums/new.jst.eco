@@ -3,7 +3,7 @@
     <div class="row-fluid">
       <div class="span6">
         <div class="field">
-          <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="SoundCloud, YouTube or Spotify URL" class="input_field">
+          <input type="text" name="input_url" id="input_url" value="<%= @input_url %>" placeholder="Spotify URI or SoundCloud/YouTube URL" class="input_field">
         </div>
       
         <div class="field">

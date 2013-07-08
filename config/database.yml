@@ -23,3 +23,36 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+
+# THIS IS THE DATABSE YML FILE FOR TEACHINGTREE, IF I SWITCH TO POSTGRES THEN I NEED TO DO SOMETHING SIMILAR
+
+# test: &test
+#   adapter: postgresql
+#   encoding: unicode
+#   database: teachingtree_test
+#   pool: 5
+#   username: teachingtree
+#   password: teachingtree
+#   host: localhost
+#   port: 5432
+
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: teachingtree_development
+#   pool: 5
+#   username: teachingtree
+#   password: teachingtree
+#   host: localhost
+#   port: 5432
+
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: teachingtree_production
+#   pool: 5
+#   username: teachingtree
+#   password: teachingtree
+#   host: localhost
+#   port: 5432

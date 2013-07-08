@@ -23,6 +23,10 @@ html, body {
   padding-bottom: 20px;
 }
 
+#input_url{
+  font-size: .9em;
+}
+
 #index_backgrond{
   min-height: 100%;
   background: url("/assets/ready.png");

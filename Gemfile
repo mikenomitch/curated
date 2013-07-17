@@ -25,6 +25,9 @@ gem 'devise'
 
 gem "find_by_shortcut", "~> 0.0.1"
 
+# For newrelic pinging
+gem 'newrelic_rpm'
+
 # For parsig the soundcloud json request
 gem 'httparty'
 
